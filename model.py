@@ -35,15 +35,6 @@ def predictStockPrice(df, days):
 
     yhat = regr.predict(x_test)
 
-    r2 = r2_score(y_test, yhat)
-    mae = mean_absolute_error(y_test, yhat)
-    mse = mean_squared_error(y_test, yhat)
-
-    print(r2)
-    print(mae)
-    print(mse)
-
-
     predData = data
     predList = []
     for i in range(forecast_days):
