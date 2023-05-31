@@ -35,8 +35,8 @@ layout = html.Div(className='view-container', children=[
         ]),
         html.Div(className='pred-btn-holder', children=[
             dcc.Link(className='back-home', children='Home', href='/'),
-            dcc.Link(className='back-view', children='View Stocks', href='/'),
-            dcc.Link(className='back-ema', children='EMA', href='/')
+            dcc.Link(className='back-view', children='View Stocks', href='/view'),
+            dcc.Link(className='back-ema', children='EMA', href='/ema')
         ])
         
 
@@ -228,8 +228,6 @@ def displayStockGraph(n_clicks, days, stock_code):
 
             ticker = yf.Ticker(stock_code)
             info = ticker.info
-
-            print(info['currency'])
     
             frame = model.getStockData(stock_code)
 
@@ -239,7 +237,7 @@ def displayStockGraph(n_clicks, days, stock_code):
 
             return dcc.Graph(figure = fig)
         except Exception as error:
-            return f"{error}"
+            return f"Some unexpected error occurred. Possible reasons: 1. Connection issues  2. Incorrect stock code"
     else:
         return ""
 

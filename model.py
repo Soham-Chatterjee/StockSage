@@ -2,11 +2,12 @@ import pandas as pd
 import yfinance as yf
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import numpy as np
 
 def getStockData(stock_code):
     ticker = yf.Ticker(stock_code)
-    data = ticker.history(period='60d')
+    data = ticker.history(period='365d')
     pd.set_option('display.max_columns', None)
     pd.set_option('display.float_format', lambda x: '%.5f' % x)
     df = pd.DataFrame.from_dict(data)
@@ -28,11 +29,19 @@ def predictStockPrice(df, days):
 
     y = y[:-forecast_days]
 
-    X_train, x_test, Y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=4)
+    X_train, x_test, Y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=4)
 
     regr = LinearRegression().fit(X_train, Y_train)
 
     yhat = regr.predict(x_test)
+
+    r2 = r2_score(y_test, yhat)
+    mae = mean_absolute_error(y_test, yhat)
+    mse = mean_squared_error(y_test, yhat)
+
+    print(r2)
+    print(mae)
+    print(mse)
 
 
     predData = data
