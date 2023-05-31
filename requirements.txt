@@ -100,7 +100,6 @@ prometheus-client==0.16.0
 prompt-toolkit==3.0.38
 psutil==5.9.1
 pure-eval==0.2.2
-PyAudio @ file:///E:/Setups%20and%20Applications/PyAudio-0.2.11-cp310-cp310-win_amd64.whl
 PyAutoGUI==0.9.53
 pycparser==2.21
 pygame==2.1.2
