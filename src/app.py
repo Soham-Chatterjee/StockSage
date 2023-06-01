@@ -5,6 +5,8 @@ from datetime import datetime as dt
 
 app = dash.Dash(__name__, use_pages=True, prevent_initial_callbacks='initial_duplicate')
 
+server = app.server
+
 app.layout = html.Div(className='container', children=[
     html.Div(className='navbar', children=[
         html.Span(className='appName', children="S T O C K S A G E"),
