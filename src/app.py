@@ -3,7 +3,7 @@ from dash import html, dcc
 from dash.dependencies import Input, Output, State
 from datetime import datetime as dt
 
-app = dash.Dash(__name__, use_pages=True, prevent_initial_callbacks='initial_duplicate')
+app = dash.Dash(__name__, use_pages=True, prevent_initial_callbacks='initial_duplicate', pages_folder="../pages")
 
 server = app.server
 
